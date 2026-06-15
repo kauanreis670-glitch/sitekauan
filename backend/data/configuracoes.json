@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "usuario_id": 1,
+    "notificacoes_email": true,
+    "notificacoes_sms": true,
+    "tema": "claro"
+  },
+  {
+    "id": 2,
+    "usuario_id": 2,
+    "notificacoes_email": true,
+    "notificacoes_sms": true,
+    "tema": "claro"
+  },
+  {
+    "id": 3,
+    "usuario_id": 3,
+    "notificacoes_email": true,
+    "notificacoes_sms": true,
+    "tema": "claro"
+  }
+]

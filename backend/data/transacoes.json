@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "conta_id": 1,
+    "tipo": "pix",
+    "valor": -200,
+    "descricao": "PIX para kauan reis",
+    "data_transacao": "2026-06-15T21:39:09.251Z"
+  },
+  {
+    "id": 2,
+    "conta_id": 3,
+    "tipo": "pix",
+    "valor": 200,
+    "descricao": "PIX de João da Silva",
+    "data_transacao": "2026-06-15T21:39:09.254Z"
+  }
+]

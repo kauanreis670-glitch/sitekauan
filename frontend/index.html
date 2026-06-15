@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bank - Seu dinheiro, sua liberdade</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
+    
+    <div id="login-page" class="page">
+        <div class="container d-flex align-items-center justify-content-center min-vh-100">
+            <div class="card shadow-lg" style="width: 100%; max-width: 450px;">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h1 class="text-primary fw-bold">Digital Bank</h1>
+                        <p class="text-muted">Seu dinheiro, sua liberdade</p>
+                    </div>
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-identificador" class="form-label">CPF ou E-mail</label>
+                            <input type="text" class="form-control" id="login-identificador" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="login-senha" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="login-lembrar">
+                            <label class="form-check-label" for="login-lembrar">Lembrar acesso</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill">Entrar</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#" id="link-cadastro" class="text-decoration-none">Não tem conta? Cadastre-se</a>
+                    </div>
+                    <div class="text-center mt-2">
+                        <a href="#" id="link-esqueci-senha" class="text-decoration-none text-muted">Esqueci minha senha</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="esqueci-senha-page" class="page" style="display: none;">
+        <div class="container d-flex align-items-center justify-content-center min-vh-100">
+            <div class="card shadow-lg" style="width: 100%; max-width: 450px;">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h1 class="text-primary fw-bold">Digital Bank</h1>
+                        <p class="text-muted">Recupere sua senha</p>
+                    </div>
+                    <form id="esqueci-senha-form">
+                        <div class="mb-3">
+                            <label for="esqueci-email" class="form-label">E-mail cadastrado</label>
+                            <input type="email" class="form-control" id="esqueci-email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill">Enviar link de recuperação</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#" id="link-login-2" class="text-decoration-none">Voltar para o login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="cadastro-page" class="page" style="display: none;">
+        <div class="container py-5">
+            <div class="card shadow-lg mx-auto" style="max-width: 700px;">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h1 class="text-primary fw-bold">Digital Bank</h1>
+                        <p class="text-muted">Crie sua conta</p>
+                    </div>
+                    <form id="cadastro-form">
+                        <div class="row">
+                            <div class="mb-3 col-md-12">
+                                <label class="form-label">Nome completo</label>
+                                <input type="text" class="form-control" id="cadastro-nome" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="cadastro-cpf" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Data de nascimento</label>
+                                <input type="date" class="form-control" id="cadastro-nascimento" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="cadastro-email" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="cadastro-telefone" required>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <label class="form-label">Endereço</label>
+                                <textarea class="form-control" id="cadastro-endereco" rows="2" required></textarea>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="cadastro-senha" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Confirmar senha</label>
+                                <input type="password" class="form-control" id="cadastro-confirmar-senha" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill">Cadastrar</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#" id="link-login" class="text-decoration-none">Já tem conta? Entre</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="main-container" class="d-flex" style="display: none;">
+        <div class="sidebar bg-gradient-primary">
+            <div class="p-4 text-center">
+                <h3 class="fw-bold">Digital Bank</h3>
+                <p class="small">Seu dinheiro, sua liberdade</p>
+            </div>
+            <nav class="nav flex-column">
+                <a class="nav-link active" id="nav-dashboard"><i class="bi bi-house-door"></i> Dashboard</a>
+                <a class="nav-link" id="nav-pix"><i class="bi bi-qr-code"></i> PIX</a>
+                <a class="nav-link" id="nav-transferencias"><i class="bi bi-arrow-left-right"></i> Transferências</a>
+                <a class="nav-link" id="nav-cartoes"><i class="bi bi-credit-card"></i> Cartões</a>
+                <a class="nav-link" id="nav-emprestimos"><i class="bi bi-cash"></i> Empréstimos</a>
+                <a class="nav-link" id="nav-perfil"><i class="bi bi-person"></i> Perfil</a>
+            </nav>
+            <div class="p-4 mt-auto">
+                <button id="btn-logout" class="btn btn-outline-light w-100 rounded-pill">Sair</button>
+            </div>
+        </div>
+        
+        <div class="main-content flex-grow-1">
+            <div id="dashboard-page" class="page">
+                <div class="container-fluid p-4">
+                    <h2 class="mb-4">Olá, <span id="user-nome"></span>!</h2>
+                    
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="card card-gradient-primary h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Saldo disponível</h5>
+                                    <h2 class="fw-bold" id="saldo-valor">R$ 0,00</h2>
+                                    <p class="mt-2 mb-0 small opacity-75">Agência: 0001 / Conta: <span id="conta-numero"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body d-flex flex-column justify-content-center gap-2">
+                                    <button id="btn-dashboard-pix" class="btn btn-primary rounded-pill py-2">Pix</button>
+                                    <button id="btn-dashboard-transferir" class="btn btn-outline-primary rounded-pill py-2">Transferir</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Cartão virtual</h5>
+                                    <p class="fw-bold">**** **** **** 1234</p>
+                                    <p class="small text-muted">Validade: 12/28</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Últimas transações</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush" id="historico-transacoes">
+                                <p class="text-muted">Nenhuma transação realizada ainda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="pix-page" class="page" style="display: none;">
+                <div class="container-fluid p-4">
+                    <h2 class="mb-4">PIX</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Realizar PIX</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="pix-form">
+                                        <div class="mb-3">
+                                            <label class="form-label">Chave PIX Aleatória</label>
+                                            <input type="text" id="pix-chave" class="form-control" placeholder="Digite a chave aleatória" required>
+                                        </div>
+                                        <div class="mb-3" id="pix-beneficiario-container">
+                                            <label class="form-label">Nome do beneficiário</label>
+                                            <input type="text" id="pix-beneficiario" class="form-control" readonly placeholder="Buscar beneficiário...">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Valor</label>
+                                            <input type="number" step="0.01" id="pix-valor" class="form-control" required placeholder="R$ 0,00">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">Enviar PIX</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Minha Chave PIX</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="fw-bold text-break" id="minha-chave-pix">Carregando...</p>
+                                    <div class="d-flex gap-2 mb-3">
+                                        <button id="btn-copiar-chave-pix" class="btn btn-outline-primary rounded-pill flex-grow-1">
+                                            <i class="bi bi-clipboard"></i> Copiar Chave
+                                        </button>
+                                        <button id="btn-gerar-chave-pix" class="btn btn-primary rounded-pill flex-grow-1">Gerar Nova Chave</button>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h6>Histórico de Chaves</h6>
+                                        <div id="historico-chaves-pix" class="list-group list-group-flush">
+                                            <p class="text-muted">Nenhuma chave gerada ainda.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Histórico de PIX</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush" id="pix-historico">
+                                        <p class="text-muted">Nenhuma transação PIX realizada.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="transferencias-page" class="page" style="display: none;">
+                <div class="container-fluid p-4">
+                    <h2 class="mb-4">Transferências</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Nova Transferência</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="transferencia-form">
+                                        <div class="mb-3">
+                                            <label class="form-label">Tipo de transferência</label>
+                                            <select id="transferencia-tipo" class="form-select">
+                                                <option value="ted">TED</option>
+                                                <option value="doc">DOC</option>
+                                                <option value="interna">Transferência Interna</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Banco (opcional)</label>
+                                            <input type="text" id="transferencia-banco" class="form-control" placeholder="Ex: Digital Bank">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Agência</label>
+                                            <input type="text" id="transferencia-agencia" class="form-control" required placeholder="0001">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Conta</label>
+                                            <input type="text" id="transferencia-conta" class="form-control" required placeholder="12345-6">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Nome do beneficiário</label>
+                                            <input type="text" id="transferencia-beneficiario" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Valor</label>
+                                            <input type="number" step="0.01" id="transferencia-valor" class="form-control" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100 rounded-pill">Realizar Transferência</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Histórico de Transferências</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush" id="transferencias-historico">
+                                        <p class="text-muted">Nenhuma transferência realizada.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="cartoes-page" class="page" style="display: none;">
+                <div class="container-fluid p-4">
+                    <h2 class="mb-4">Cartões</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Cartão Físico</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-credit card-credit-primary mb-3">
+                                        <div class="card-credit-chip"></div>
+                                        <div class="card-credit-number">5155 3210 9876 5432</div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="card-credit-name" id="cartao-fisico-nome">JOÃO DA SILVA</div>
+                                            <div class="card-credit-expiry">12/28</div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="mb-1"><strong>Limite:</strong> R$ 5.000,00</p>
+                                        <p class="mb-1"><strong>Limite disponível:</strong> R$ 3.250,00</p>
+                                        <p><strong>Status:</strong> <span id="cartao-fisico-status" class="text-success">Ativo</span></p>
+                                    </div>
+                                    <button id="btn-cartao-fisico" class="btn btn-outline-danger rounded-pill w-100">Bloquear</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Cartão Virtual</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-credit card-credit-secondary mb-3">
+                                        <div class="card-credit-chip"></div>
+                                        <div class="card-credit-number">4123 5678 9012 3456</div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="card-credit-name" id="cartao-virtual-nome">JOÃO DA SILVA</div>
+                                            <div class="card-credit-expiry">06/27</div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="mb-1"><strong>Limite:</strong> R$ 1.000,00</p>
+                                        <p class="mb-1"><strong>Limite disponível:</strong> R$ 850,00</p>
+                                        <p><strong>Status:</strong> <span id="cartao-virtual-status" class="text-success">Ativo</span></p>
+                                    </div>
+                                    <button id="btn-cartao-virtual" class="btn btn-outline-danger rounded-pill w-100">Bloquear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="emprestimos-page" class="page" style="display: none;">
+                <div class="container-fluid p-4">
+                    <h2 class="mb-4">Empréstimos</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Simular Empréstimo</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="emprestimo-simular-form">
+                                        <div class="mb-3">
+                                            <label class="form-label">Valor desejado</label>
+                                            <input type="number" step="0.01" id="emprestimo-valor" class="form-control" placeholder="R$ 1.000,00" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Número de parcelas (até 48)</label>
+                                            <select id="emprestimo-parcelas" class="form-select">
+                                                <option value="1">1x</option>
+                                                <option value="3">3x</option>
+                                                <option value="6">6x</option>
+                                                <option value="10">10x</option>
+                                                <option value="12" selected>12x</option>
+                                                <option value="18">18x</option>
+                                                <option value="24">24x</option>
+                                                <option value="36">36x</option>
+                                                <option value="48">48x</option>
+                                            </select>
+                                        </div>
+                                        <div id="emprestimo-simulacao-resultado" class="mb-3 p-3 bg-light rounded-3">
+                                            <p class="text-muted mb-0">Preencha os campos para simular.</p>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100 rounded-pill">Simular</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Solicitar Empréstimo</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="emprestimo-solicitar-form">
+                                        <button type="submit" id="btn-solicitar-emprestimo" class="btn btn-success w-100 rounded-pill" disabled>Solicitar Empréstimo</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Meus Empréstimos</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush" id="emprestimos-historico">
+                                        <p class="text-muted">Nenhum empréstimo solicitado.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="perfil-page" class="page" style="display: none;">
+                <div class="container-fluid p-4">
+                    <h2 class="mb-4">Perfil</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="perfil-form">
+                                <div class="mb-3">
+                                    <label class="form-label">Nome completo</label>
+                                    <input type="text" class="form-control" id="perfil-nome">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">CPF</label>
+                                    <input type="text" class="form-control" id="perfil-cpf" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Data de nascimento</label>
+                                    <input type="date" class="form-control" id="perfil-nascimento" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">E-mail</label>
+                                    <input type="email" class="form-control" id="perfil-email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Telefone</label>
+                                    <input type="text" class="form-control" id="perfil-telefone">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Endereço</label>
+                                    <textarea class="form-control" id="perfil-endereco" rows="2"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary rounded-pill">Atualizar perfil</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Alterar senha</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="senha-form">
+                                <div class="mb-3">
+                                    <label class="form-label">Senha atual</label>
+                                    <input type="password" class="form-control" id="senha-atual">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nova senha</label>
+                                    <input type="password" class="form-control" id="senha-nova">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirmar nova senha</label>
+                                    <input type="password" class="form-control" id="senha-confirmar">
+                                </div>
+                                <button type="submit" class="btn btn-primary rounded-pill">Alterar senha</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

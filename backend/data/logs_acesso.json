@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "usuario_id": 1,
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "data_acesso": "2026-06-15T21:38:26.665Z",
+    "sucesso": true
+  },
+  {
+    "id": 2,
+    "usuario_id": 3,
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "data_acesso": "2026-06-15T21:38:48.660Z",
+    "sucesso": true
+  }
+]
